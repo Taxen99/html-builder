@@ -233,14 +233,14 @@ impl Ctx {
 
     fn open(&mut self, tag: &str, depth: usize) {
         self.close_deeper_than(depth);
-        write!(self.wtr, "{:>w$}{}", "<", tag, w = depth + 1).unwrap();
-        self.tag_open = Some(">\n");
+        write!(self.wtr, "<{}", tag).unwrap();
+        self.tag_open = Some(">");
     }
 
     fn open_comment(&mut self, depth: usize) {
         self.close_deeper_than(depth);
-        write!(self.wtr, "{:>w$}!-- ", "<", w = depth + 1).unwrap();
-        self.tag_open = Some(" -->\n");
+        write!(self.wtr, "<!-- ").unwrap();
+        self.tag_open = Some(" -->");
     }
 }
 
