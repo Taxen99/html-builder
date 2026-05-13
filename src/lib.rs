@@ -226,7 +226,7 @@ impl Ctx {
         let to_pop = self.stack.len() - depth;
         for _ in 0..to_pop {
             if let Some(tag) = self.stack.pop() {
-                writeln!(self.wtr, "{:>w$}/{}>", "<", tag, w = self.stack.len() + 1).unwrap();
+                writeln!(self.wtr, "</{}>", tag).unwrap();
             }
         }
     }
